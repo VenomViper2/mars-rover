@@ -19,14 +19,11 @@ public class MarsRover {
     }
 
     private void turnRight() {
-        if (direction.equals(Directions.NORTH)) {
-            direction = Directions.EAST;
-        }else if(direction.equals(Directions.EAST)){
-            direction=Directions.SOUTH;
-        }else if(direction.equals(Directions.SOUTH)){
-            direction=Directions.WEST;
-        }else if(direction.equals(Directions.WEST)){
-            direction=Directions.NORTH;
+        switch (direction) {
+            case Directions.NORTH -> direction = Directions.EAST;
+            case Directions.EAST -> direction = Directions.SOUTH;
+            case Directions.SOUTH -> direction = Directions.WEST;
+            case Directions.WEST -> direction = Directions.NORTH;
         }
     }
 
