@@ -1,39 +1,30 @@
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.awt.*;
 import java.util.Map;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MarsRoverTest {
 
-    @Test
-    void marsRoverFacesWestWhenTurningLeftFromNorth() {
-        MarsRover marsRover = new MarsRover("North");
+    @ParameterizedTest
+    @MethodSource("marsRoverLeftTestCases")
+    void marsRoverFacesCorrectDirectionWhenTurningLeft(String initialDirection, String expectedDirection) {
+        MarsRover marsRover = new MarsRover(initialDirection);
         marsRover.turn("L");
-        assertEquals("West", marsRover.getDirection());
+        assertEquals(expectedDirection, marsRover.getDirection());
     }
 
-    @Test
-    void marsRoverFacesSouthWhenTurningLeftFromWest() {
-        MarsRover marsRover = new MarsRover("West");
-        marsRover.turn("L");
-        assertEquals("South", marsRover.getDirection());
+    private static Stream<Arguments> marsRoverLeftTestCases() {
+        return Stream.of(
+                Arguments.of("North", "West"),
+                Arguments.of("West", "South"),
+                Arguments.of("South", "East"),
+                Arguments.of("East", "North")
+        );
     }
-
-    @Test
-    void marsRoverFacesEastWhenTurningLeftFromSouth(){
-        MarsRover marsRover=new MarsRover("South");
-        marsRover.turn("L");
-        assertEquals("East",marsRover.getDirection());
-    }
-
-    @Test
-    void marsRoverFacesNorthWhenTurningFromEast() {
-        MarsRover marsRover = new MarsRover("East");
-        marsRover.turn("L");
-        assertEquals("North", marsRover.getDirection());
-    }
-
-
 }
