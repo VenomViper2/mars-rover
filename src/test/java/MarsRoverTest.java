@@ -26,30 +26,20 @@ public class MarsRoverTest {
         );
     }
 
-    @Test
-    void marsRoverFacesEastWhenTurningRightFromNorth() {
-        MarsRover marsRover = new MarsRover(Directions.NORTH);
+    @ParameterizedTest
+    @MethodSource("marsRoverRightTestCases")
+    void marsRoverFacesCorrectDirectionWhenTurningRight(String initialDirection, String expectedDirection) {
+        MarsRover marsRover = new MarsRover(initialDirection);
         marsRover.turn(Instructions.RIGHT);
-        assertEquals(Directions.EAST, marsRover.getDirection());
-    }
-    @Test
-    void marsRoverFaceSouthWhenTurningRightFromEast(){
-        MarsRover marsRover=new MarsRover(Directions.EAST);
-        marsRover.turn(Instructions.RIGHT);
-        assertEquals(Directions.SOUTH,marsRover.getDirection());
+        assertEquals(expectedDirection, marsRover.getDirection());
     }
 
-    @Test
-    void marsRoverFaceWestWhenTurningRightFromSouth(){
-        MarsRover marsRover=new MarsRover(Directions.SOUTH);
-        marsRover.turn(Instructions.RIGHT);
-        assertEquals(Directions.WEST,marsRover.getDirection());
-    }
-
-    @Test
-    void marsRoverFaceNorthWhenTurningRightFromWest(){
-        MarsRover marsRover=new MarsRover(Directions.WEST);
-        marsRover.turn(Instructions.RIGHT);
-        assertEquals(Directions.NORTH, marsRover.getDirection());
+    private static Stream<Arguments> marsRoverRightTestCases() {
+        return Stream.of(
+                Arguments.of(Directions.NORTH, Directions.EAST),
+                Arguments.of(Directions.EAST, Directions.SOUTH),
+                Arguments.of(Directions.SOUTH, Directions.WEST),
+                Arguments.of(Directions.WEST, Directions.NORTH)
+        );
     }
 }
