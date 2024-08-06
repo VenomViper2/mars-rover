@@ -3,8 +3,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.awt.*;
-import java.util.Map;
 import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -21,17 +19,17 @@ public class MarsRoverTest {
 
     private static Stream<Arguments> marsRoverLeftTestCases() {
         return Stream.of(
-                Arguments.of("North", "West"),
-                Arguments.of("West", "South"),
-                Arguments.of("South", "East"),
-                Arguments.of("East", "North")
+                Arguments.of(Directions.NORTH, Directions.WEST),
+                Arguments.of(Directions.WEST, Directions.SOUTH),
+                Arguments.of(Directions.SOUTH, Directions.EAST),
+                Arguments.of(Directions.EAST, Directions.NORTH)
         );
     }
 
     @Test
     void marsRoverFacesEastWhenTurningRightFromNorth() {
-        MarsRover marsRover = new MarsRover("North");
+        MarsRover marsRover = new MarsRover(Directions.NORTH);
         marsRover.turn(Instructions.RIGHT);
-        assertEquals("East", marsRover.getDirection());
+        assertEquals(Directions.EAST, marsRover.getDirection());
     }
 }
