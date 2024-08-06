@@ -4,6 +4,8 @@ public class MarsRover {
     public static final String WEST = "West";
     public static final String SOUTH = "South";
     public static final String EAST = "East";
+    public static final String RIGHT = "R";
+    public static final String LEFT = "L";
     private String direction;
 
     public MarsRover(String direction) {
@@ -15,14 +17,14 @@ public class MarsRover {
     }
 
     public void turn(String instruction) {
-        if (instruction.equals("L")) {
+        if (instruction.equals(LEFT)) {
             switch (direction) {
                 case NORTH -> direction = WEST;
                 case SOUTH -> direction = EAST;
                 case WEST -> direction = SOUTH;
                 case EAST -> direction = NORTH;
             }
-        } else if (instruction.equals("R")) {
+        } else if (instruction.equals(RIGHT)) {
             if (direction.equals(NORTH)) {
                 direction = EAST;
             }
