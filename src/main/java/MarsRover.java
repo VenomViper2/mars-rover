@@ -10,11 +10,18 @@ public class MarsRover {
     }
 
     public void turn(String instruction) {
-        switch (direction) {
-            case "North" -> direction = "West";
-            case "South" -> direction = "East";
-            case "West" -> direction = "South";
-            case "East" -> direction = "North";
+        if (instruction.equals("L")) {
+            switch (direction) {
+                case "North" -> direction = "West";
+                case "South" -> direction = "East";
+                case "West" -> direction = "South";
+                case "East" -> direction = "North";
+            }
+        }
+        else if (instruction.equals("R")) {
+            if (direction.equals("North")) {
+                direction = "East";
+            }
         }
     }
 }

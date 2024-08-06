@@ -27,4 +27,11 @@ public class MarsRoverTest {
                 Arguments.of("East", "North")
         );
     }
+
+    @Test
+    void marsRoverFacesEastWhenTurningRightFromNorth() {
+        MarsRover marsRover = new MarsRover("North");
+        marsRover.turn("R");
+        assertEquals("East", marsRover.getDirection());
+    }
 }
