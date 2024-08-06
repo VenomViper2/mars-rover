@@ -32,4 +32,24 @@ public class MarsRoverTest {
         marsRover.turn(Instructions.RIGHT);
         assertEquals(Directions.EAST, marsRover.getDirection());
     }
+    @Test
+    void marsRoverFaceSouthWhenTurningRightFromEast(){
+        MarsRover marsRover=new MarsRover(Directions.EAST);
+        marsRover.turn(Instructions.RIGHT);
+        assertEquals(Directions.SOUTH,marsRover.getDirection());
+    }
+
+    @Test
+    void marsRoverFaceWestWhenTurningRightFromSouth(){
+        MarsRover marsRover=new MarsRover(Directions.SOUTH);
+        marsRover.turn(Instructions.RIGHT);
+        assertEquals(Directions.WEST,marsRover.getDirection());
+    }
+
+    @Test
+    void marsRoverFaceNorthWhenTurningRightFromWest(){
+        MarsRover marsRover=new MarsRover(Directions.WEST);
+        marsRover.turn(Instructions.RIGHT);
+        assertEquals(Directions.NORTH, marsRover.getDirection());
+    }
 }
