@@ -15,7 +15,7 @@ public class MarsRoverTest {
     @MethodSource("marsRoverLeftTestCases")
     void marsRoverFacesCorrectDirectionWhenTurningLeft(String initialDirection, String expectedDirection) {
         MarsRover marsRover = new MarsRover(initialDirection);
-        marsRover.turn("L");
+        marsRover.turn(Instructions.LEFT);
         assertEquals(expectedDirection, marsRover.getDirection());
     }
 
@@ -31,7 +31,7 @@ public class MarsRoverTest {
     @Test
     void marsRoverFacesEastWhenTurningRightFromNorth() {
         MarsRover marsRover = new MarsRover("North");
-        marsRover.turn("R");
+        marsRover.turn(Instructions.RIGHT);
         assertEquals("East", marsRover.getDirection());
     }
 }
