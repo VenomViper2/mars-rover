@@ -1,7 +1,5 @@
 public class MarsRover {
 
-    public static final String RIGHT = "R";
-    public static final String LEFT = "L";
     private String direction;
 
     public MarsRover(String direction) {
@@ -13,9 +11,9 @@ public class MarsRover {
     }
 
     public void turn(String instruction) {
-        if (instruction.equals(LEFT)) {
+        if (instruction.equals(Instructions.LEFT)) {
             turnLeft();
-        } else if (instruction.equals(RIGHT)) {
+        } else if (instruction.equals(Instructions.RIGHT)) {
             turnRight();
         }
     }
